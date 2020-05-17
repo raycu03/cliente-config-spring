@@ -10,10 +10,6 @@ import com.example.demo.config.Configuration;
 
 @SpringBootApplication
 public class Cliente1Application {
-
-	
-	@Autowired
-	private Configuration configuratio;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Cliente1Application.class, args);

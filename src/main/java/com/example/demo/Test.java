@@ -8,6 +8,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -28,12 +29,13 @@ public class Test {
 	 @Autowired
 	    private MockMvc mockMvc;
 	
-	@Value("${how.oee}")	
+	@Value("${how.oee}")
 	String valorFijo;
-	
+
+	@GetMapping
 	 public void whenValidRequest_thenReturns200() throws Exception {
 
-	        mockMvc.perform(post("http://localhost:8080/refresh "))
+	        mockMvc.perform(post("http://localhost:8081/refresh"))
 	                .andDo(print());
 	    }
 
@@ -42,7 +44,7 @@ public class Test {
 	    { 
 			System.out.print(valorFijo);
 			 //Thread.sleep(20000);
-			whenValidRequest_thenReturns200();
+			//whenValidRequest_thenReturns200();
 		
 			return valorFijo;
 			
